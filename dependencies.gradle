@@ -1,0 +1,35 @@
+ext {
+    apply from: "$rootDir/versions.gradle"
+
+    core = [
+            kotlinStdLib: ("org.jetbrains.kotlin:kotlin-stdlib:$version_kotlin"),
+            coreKtx: ("androidx.core:core-ktx:$version_androidx_core"),
+            appCompat: ("androidx.appcompat:appcompat:$version_androidx_appcompat"),
+            constraintLayout: ("androidx.constraintlayout:constraintlayout:$version_androidx_constraintlayout"),
+            googleMaterial: ("com.google.android.material:material:$version_google_material"),
+            mvrx: ("com.airbnb.android:mvrx:$version_mvrx")
+    ]
+
+    testing = [
+            junit: ("junit:junit:$version_test_junit"),
+            extJunit: ("androidx.test.ext:junit:$version_test_extjunit"),
+            espresso: ("androidx.test.espresso:espresso-core:$version_test_espresso")
+    ]
+
+    networking = [
+            retrofit: ("com.squareup.retrofit2:retrofit:$version_retrofit"),
+            retrofitGson: ("com.squareup.retrofit2:converter-gson:$version_retrofit"),
+            retrofitRx: ("com.squareup.retrofit2:adapter-rxjava2:$version_retrofit"),
+            logginInterceptor: ("com.squareup.okhttp3:logging-interceptor:$version_okhttp")
+    ]
+
+    dagger = [
+            core: ("com.google.dagger:dagger:$version_dagger"),
+            android: ("com.google.dagger:dagger-android:$version_dagger"),
+            support: ("com.google.dagger:dagger-android-support:$version_dagger"),
+            compiler: ("com.google.dagger:dagger-compiler:$version_dagger"),
+            androidProcessor: ("com.google.dagger:dagger-android-processor:$version_dagger"),
+            assistedInject: ("com.squareup.inject:assisted-inject-annotations-dagger2:$version_dagger_assisted"),
+            assistedInjectProcessor: ("com.squareup.inject:assisted-inject-processor-dagger2:$version_dagger_assisted")
+    ]
+}

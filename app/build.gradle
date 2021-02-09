@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: "$rootDir/versions.gradle"
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+    compileSdkVersion version_compile_sdk
+    buildToolsVersion version_build_tools
+
+    defaultConfig {
+        applicationId "com.srikandi"
+        minSdkVersion version_min_sdk
+        targetSdkVersion version_target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+
+    implementation core.kotlinStdLib
+    implementation core.coreKtx
+    implementation core.appCompat
+    implementation core.googleMaterial
+    implementation core.constraintLayout
+    implementation core.mvrx
+
+    implementation networking.retrofit
+    implementation networking.retrofitRx
+    implementation networking.retrofitGson
+    implementation networking.logginInterceptor
+
+    implementation dagger.core
+    implementation dagger.android
+    implementation dagger.support
+    implementation dagger.assistedInject
+    kapt dagger.compiler
+    kapt dagger.androidProcessor
+    kapt dagger.assistedInjectProcessor
+
+    testImplementation testing.junit
+    androidTestImplementation testing.extJunit
+    androidTestImplementation testing.espresso
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == "androidx.appcompat") {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion "1.+"
+            }
+        }
+    }
+}
