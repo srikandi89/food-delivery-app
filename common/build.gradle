@@ -64,6 +64,4 @@ dependencies {
     testImplementation testing.junit
     androidTestImplementation testing.extJunit
     androidTestImplementation testing.espresso
-
-    implementation project(":common")
 }
