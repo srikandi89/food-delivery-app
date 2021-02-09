@@ -57,6 +57,9 @@ dependencies {
     implementation dagger.android
     implementation dagger.support
     implementation dagger.assistedInject
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     kapt dagger.compiler
     kapt dagger.androidProcessor
     kapt dagger.assistedInjectProcessor
