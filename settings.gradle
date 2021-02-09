@@ -1,2 +1,3 @@
+include ':feature-homepage'
 include ':app'
 rootProject.name = "food-delivery-app"
