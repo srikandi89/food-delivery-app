@@ -4,9 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.srikandi.common.extensions.addFragment
 import com.srikandi.homepage.screen.HomepageShowcaseFragment
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class HomepageActivity : AppCompatActivity() {
+class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
+    @Inject
+    lateinit var supportFragmentInjector: DispatchingAndroidInjector<Any>
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
 
@@ -14,4 +23,6 @@ class HomepageActivity : AppCompatActivity() {
             addFragment<HomepageShowcaseFragment>(R.id.homepage_activity_framelayout)
         }
     }
+
+    override fun androidInjector() = supportFragmentInjector
 }
