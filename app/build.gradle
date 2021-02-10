@@ -51,7 +51,7 @@ dependencies {
     implementation networking.retrofit
     implementation networking.retrofitRx
     implementation networking.retrofitGson
-    implementation networking.logginInterceptor
+    implementation networking.loggingInterceptor
 
     implementation dagger.core
     implementation dagger.android
@@ -67,15 +67,4 @@ dependencies {
 
     implementation project(":common")
     implementation project(":feature-homepage")
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == "androidx.appcompat") {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion "1.+"
-            }
-        }
-    }
 }

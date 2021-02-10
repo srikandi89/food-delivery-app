@@ -51,7 +51,7 @@ dependencies {
     implementation networking.retrofit
     implementation networking.retrofitRx
     implementation networking.retrofitGson
-    implementation networking.logginInterceptor
+    implementation networking.loggingInterceptor
 
     implementation dagger.core
     implementation dagger.android

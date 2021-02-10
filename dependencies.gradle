@@ -20,7 +20,7 @@ ext {
             retrofit: ("com.squareup.retrofit2:retrofit:$version_retrofit"),
             retrofitGson: ("com.squareup.retrofit2:converter-gson:$version_retrofit"),
             retrofitRx: ("com.squareup.retrofit2:adapter-rxjava2:$version_retrofit"),
-            logginInterceptor: ("com.squareup.okhttp3:logging-interceptor:$version_okhttp")
+            loggingInterceptor: ("com.squareup.okhttp3:logging-interceptor:$version_okhttp")
     ]
 
     dagger = [
