@@ -3,9 +3,8 @@ package com.srikandi.homepage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.srikandi.common.extensions.addFragment
-import com.srikandi.homepage.screen.HomepageShowcaseFragment
+import com.srikandi.homepage.screen.showcase.HomepageShowcaseFragment
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
