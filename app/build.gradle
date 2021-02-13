@@ -7,6 +7,7 @@ plugins {
 
 apply from: "$rootDir/versions.gradle"
 apply from: "$rootDir/dependencies.gradle"
+apply from: "config.gradle"
 
 android {
     compileSdkVersion version_compile_sdk
@@ -38,6 +39,8 @@ android {
     buildFeatures {
         dataBinding = true
     }
+    // put config.properties in your app root project directory
+    generateBuildConfig("$rootDir/config.properties", defaultConfig)
 }
 
 dependencies {
