@@ -17,7 +17,7 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_homepage)
+        setContentView(R.layout.homepage_activity)
 
         if (savedInstanceState == null) {
             addFragment<HomepageShowcaseFragment>(R.id.homepage_activity_framelayout)

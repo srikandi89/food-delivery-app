@@ -38,12 +38,20 @@
                 android:textSize="@dimen/common_header_textsize_subtitle" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/homepage_imageview_showcase_imageslider"
+<!--        <ImageView-->
+<!--            android:id="@+id/homepage_imageview_showcase_imageslider"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/abc_vector_test"-->
+<!--            app:layout_collapseMode="parallax"-->
+<!--            app:layout_collapseParallaxMultiplier="0.7" />-->
+
+        <com.srikandi.uikit.ImageSlider
+            android:id="@+id/homepage_imageslider_showcase"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/abc_vector_test"
+            app:show_page_indicator="true"
             app:layout_collapseMode="parallax"
             app:layout_collapseParallaxMultiplier="0.7" />
 

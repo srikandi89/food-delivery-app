@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
@@ -13,13 +13,13 @@ android {
     buildToolsVersion version_build_tools
 
     defaultConfig {
-        applicationId "com.srikandi"
         minSdkVersion version_min_sdk
         targetSdkVersion version_target_sdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -35,9 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        dataBinding = true
-    }
 }
 
 dependencies {
@@ -47,25 +44,15 @@ dependencies {
     implementation core.appCompat
     implementation core.googleMaterial
     implementation core.constraintLayout
-    implementation core.mvrx
-
-    implementation networking.retrofit
-    implementation networking.retrofitRx
-    implementation networking.retrofitGson
-    implementation networking.loggingInterceptor
-
-    implementation dagger.core
-    implementation dagger.android
-    implementation dagger.support
-    implementation dagger.assistedInject
-    kapt dagger.compiler
-    kapt dagger.androidProcessor
-    kapt dagger.assistedInjectProcessor
 
     testImplementation testing.junit
     androidTestImplementation testing.extJunit
     androidTestImplementation testing.espresso
 
-    implementation project(":common")
-    implementation project(":feature-homepage")
+    implementation multimedia.glide
+    kapt multimedia.glideCompiler
+
+    implementation others.pageIndicator
+
+    implementation project (":common")
 }
