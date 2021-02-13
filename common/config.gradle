@@ -1,0 +1,22 @@
+
+/**
+ * read configuration from config.properties,
+ * then generate the BuildConfig properties
+ */
+ext.generateBuildConfig = { filename, config ->
+    def properties = new Properties()
+
+    try {
+        println("================== Generating BuildConfig Properties ==================")
+        file(filename).withInputStream { properties.load(it) }
+
+        for (property in properties) {
+            config.buildConfigField "String", "${property.key.toString()}", "${property.value.toString()}"
+        }
+
+    } catch (FileNotFoundException e) {
+        properties = null
+        println("generateBuildConfig() >>> $filename was not found. Set properties to null.")
+        println("generateBuildConfig() >>> ${e.message}")
+    }
+}
