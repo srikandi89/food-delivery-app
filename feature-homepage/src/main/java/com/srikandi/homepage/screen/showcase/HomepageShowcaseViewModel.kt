@@ -44,6 +44,13 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
         }
     }
 
+    fun addCartItem(product: HomepageProductDto) = setState {
+        val newList = cartContainer.toMutableList().apply {
+            add(product)
+        }
+        copy(cartContainer = newList)
+    }
+
     @AssistedInject.Factory
     interface Factory {
         fun create(initialState: HomepageShowcaseState): HomepageShowcaseViewModel

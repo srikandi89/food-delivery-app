@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/homepage_imageview_showcase_productitem"
@@ -30,4 +30,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homepage_textview_showcase_producttitle"
         tools:text="Grilled Papperoni Pizza" />
+
+    <TextView
+        android:id="@+id/homepage_textview_showcase_productdetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/homepage_button_showcase_addproduct"
+        app:layout_constraintEnd_toStartOf="@+id/homepage_button_showcase_addproduct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/homepage_button_showcase_addproduct"
+        tools:text="16 Gram, 35 cm" />
+
+    <Button
+        android:id="@+id/homepage_button_showcase_addproduct"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_textview_showcase_productsubtitle"
+        tools:text="60USD" />
 </androidx.constraintlayout.widget.ConstraintLayout>

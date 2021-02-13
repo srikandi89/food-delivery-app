@@ -66,6 +66,8 @@ dependencies {
     implementation multimedia.glide
     kapt multimedia.glideCompiler
 
+    implementation others.counterFab
+
     implementation project(":common")
     implementation project(":uikit")
 }

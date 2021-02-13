@@ -8,6 +8,7 @@
     android:theme="@style/Theme.Fooddeliveryapp">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/homepage_appbar_showcase"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -59,4 +60,14 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/homepage_item_showcase_product" />
+
+    <com.andremion.counterfab.CounterFab
+        android:id="@+id/homepage_counterfab_showcase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_anchor="@id/homepage_recyclerview_showcase"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/baseline_add_shopping_cart_24"
+        android:backgroundTint="@color/white" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

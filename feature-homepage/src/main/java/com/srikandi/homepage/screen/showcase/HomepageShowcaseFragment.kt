@@ -25,7 +25,7 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
         R.layout.homepage_item_showcase_product,
         onBind = ::bindProductListView,
         itemListener = { item, _, _ ->
-            // todo: add on item click listener here
+            viewModel.addCartItem(item)
         }
     )
 
@@ -34,12 +34,14 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
 
         subscribeImageSlider()
         subscribeProductList()
+        subscribeCartContainer()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+        setupNavigation()
     }
 
     override fun onDestroyView() {
@@ -54,10 +56,24 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
         }
     }
 
+    private fun setupNavigation() {
+        homepage_counterfab_showcase.setOnClickListener {
+            // todo : go to cart screen
+        }
+    }
+
     private fun bindProductListView(item: HomepageProductDto, position: Int, view: View) {
+        // todo : change homepage_textview_showcase_productdetail with real value
         with(view) {
             homepage_textview_showcase_producttitle.text = item.title
             homepage_textview_showcase_productsubtitle.text = item.subtitle
+            homepage_textview_showcase_productdetail.text = item.subtitle
+            with(homepage_button_showcase_addproduct) {
+                text = item.price.toString()
+                setOnClickListener {
+                    viewModel.addCartItem(item)
+                }
+            }
             Glide.with(this@HomepageShowcaseFragment)
                 .load(item.imageUrl)
                 .centerCrop()
@@ -74,6 +90,12 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
     private fun subscribeProductList() {
         viewModel.selectSubscribe(HomepageShowcaseState::productsAsync, uniqueOnly()) {
             manageProductListState(it)
+        }
+    }
+    
+    private fun subscribeCartContainer() {
+        viewModel.selectSubscribe(HomepageShowcaseState::cartContainer, uniqueOnly()) {
+            homepage_counterfab_showcase.count = it.size
         }
     }
 

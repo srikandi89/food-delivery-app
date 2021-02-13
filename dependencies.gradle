@@ -39,6 +39,7 @@ ext {
     ]
 
     others = [
-            pageIndicator: ("me.relex:circleindicator:$version_pageindicator")
+            pageIndicator: ("me.relex:circleindicator:$version_pageindicator"),
+            counterFab: ("com.github.andremion:counterfab:$version_counterfab")
     ]
 }
