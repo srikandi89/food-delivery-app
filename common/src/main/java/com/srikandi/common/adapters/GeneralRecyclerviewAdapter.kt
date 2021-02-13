@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class GeneralRecyclerviewAdapter<T>(
     @LayoutRes val layoutResId: Int,
-    private val onBind: (T, View) -> Unit,
+    private val onBind: (T, position: Int, View) -> Unit,
     private val itemListener: (T, position: Int, View) -> Unit
 ): RecyclerView.Adapter<GeneralRecyclerviewViewHolder<T>>() {
     private val diffCallback = DiffCallback<T>()

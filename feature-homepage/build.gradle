@@ -63,6 +63,9 @@ dependencies {
     androidTestImplementation testing.extJunit
     androidTestImplementation testing.espresso
 
+    implementation multimedia.glide
+    kapt multimedia.glideCompiler
+
     implementation project(":common")
     implementation project(":uikit")
 }

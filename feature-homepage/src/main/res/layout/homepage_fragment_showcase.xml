@@ -50,15 +50,13 @@
                 android:textSize="@dimen/common_header_textsize_subtitle" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- todo: fix recyclerview preventing slide swipe -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homepage_recyclerview_showcase"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/homepage_item_showcase_product" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
