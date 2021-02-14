@@ -3,7 +3,9 @@ package com.srikandi.mock
 import com.google.gson.Gson
 import com.srikandi.BuildConfig
 import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
+import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
 import com.srikandi.homepage.data.remote.response.HomepageImageSliderResponse
+import com.srikandi.homepage.data.remote.response.HomepageProductResponse
 import okhttp3.*
 
 class MockInterceptor : Interceptor {
@@ -15,6 +17,9 @@ class MockInterceptor : Interceptor {
             val responseString = when {
                 uri.endsWith("imageliders") -> {
                     gson.toJson(getMockImageSliders())
+                }
+                uri.endsWith("productlist") -> {
+                    gson.toJson(getMockProductList())
                 }
                 else -> ""
             }
@@ -37,7 +42,7 @@ class MockInterceptor : Interceptor {
     }
 
     private fun getMockImageSliders(): HomepageGetImageSlidersResponse {
-        val slides = listOf<HomepageImageSliderResponse>(
+        val slides = listOf(
             HomepageImageSliderResponse(
                 title = "Papperoni Pizza",
                 subtitle = "Grilled Papperoni Pizza",
@@ -53,5 +58,34 @@ class MockInterceptor : Interceptor {
         return HomepageGetImageSlidersResponse(slides)
     }
 
+    private fun getMockProductList(): HomepageGetProductListResponse {
+        val slides = listOf(
+            HomepageProductResponse(
+                productId = 1,
+                title = "Papperoni Pizza",
+                subtitle = "Grilled Papperoni Pizza",
+                imageUrl = "https://image.freepik.com/free-photo/chicken-steak-with-lemon-tomato-chili-carrot-white-plate_1150-25887.jpg",
+                price = 60.0,
+                currency = "USD"
+            ),
+            HomepageProductResponse(
+                productId = 1,
+                title = "Baked Cheezy Chicken",
+                subtitle = "Hot Cheezy Baked Chicken",
+                imageUrl = "https://image.freepik.com/free-photo/frozen-homemade-round-cutlets_114579-35131.jpg",
+                price = 45.0,
+                currency = "USD"
+            ),
+            HomepageProductResponse(
+                productId = 1,
+                title = "Fried Chicken",
+                subtitle = "Hot Spicy Fried Chicken",
+                imageUrl = "https://image.freepik.com/free-photo/frozen-homemade-round-cutlets_114579-35131.jpg",
+                price = 33.0,
+                currency = "USD"
+            )
+        )
 
+        return HomepageGetProductListResponse(slides)
+    }
 }

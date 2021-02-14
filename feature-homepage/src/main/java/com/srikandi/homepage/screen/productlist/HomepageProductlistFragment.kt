@@ -52,7 +52,7 @@ class HomepageProductlistFragment : HomepageFragment(R.layout.homepage_fragment_
             homepage_textview_showcase_productsubtitle.text = item.subtitle
             homepage_textview_showcase_productdetail.text = item.subtitle
             with(homepage_button_showcase_addproduct) {
-                text = item.price.toString()
+                text = getString(R.string.homepage_text_showcase_productprice, item.price.toString(), item.currency)
                 setOnClickListener {
                     viewModel.addCartItem(item)
                 }

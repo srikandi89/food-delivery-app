@@ -12,5 +12,7 @@ data class HomepageProductResponse(
     @SerializedName("image_url")
     val imageUrl: String? = null,
     @SerializedName("price")
-    val price: Double? = null
+    val price: Double? = null,
+    @SerializedName("currency")
+    val currency: String? = null
 )
