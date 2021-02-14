@@ -56,6 +56,20 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
         copy(cartContainer = newList)
     }
 
+    /**
+     * for the sake of simplicity, removing the product with quantity > 1
+     * will definitely remove its product from the cart
+     */
+    fun removeCartItem(product: HomepageProductDto) = setState {
+        val newList = cartContainer.toMutableList().apply {
+            val productInCart = find { it.product === product }
+            if (productInCart != null) {
+                remove(productInCart)
+            }
+        }
+        copy(cartContainer = newList)
+    }
+
     fun updateSelectedFilters(position: Int) = setState {
         val filters = filtersAsync.invoke().orEmpty().mapIndexed { index, homepageFilterDto ->
             if (index == position) {

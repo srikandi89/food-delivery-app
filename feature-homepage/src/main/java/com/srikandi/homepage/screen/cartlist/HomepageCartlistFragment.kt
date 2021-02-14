@@ -47,10 +47,9 @@ class HomepageCartlistFragment : MvRxDialogFragment(R.layout.homepage_fragment_c
     private fun subscribeCartContainer() {
         viewModel.selectSubscribe(HomepageShowcaseState::cartContainer) { cartList ->
             calculateTotal(cartList)
+            cartListAdapter.setData(cartList)
 
-            if (cartList.isNotEmpty()) {
-                cartListAdapter.setData(cartList)
-            } else {
+            if (cartList.isEmpty()) {
                 // todo : handle empty screen here
             }
         }
@@ -90,7 +89,7 @@ class HomepageCartlistFragment : MvRxDialogFragment(R.layout.homepage_fragment_c
             homepage_textview_cartlist_title.text = product.title
             homepage_textview_cartlist_priceinfo.text = productAndQty
             homepage_imageview_cartlist_removeicon.setOnClickListener {
-
+                viewModel.removeCartItem(item.product)
             }
         }
     }
