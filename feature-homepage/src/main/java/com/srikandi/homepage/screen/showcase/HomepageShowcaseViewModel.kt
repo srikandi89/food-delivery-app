@@ -8,6 +8,7 @@ import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import com.srikandi.common.mvrx.MvRxViewModel
 import com.srikandi.homepage.domain.HomepageUseCaseImpl
+import com.srikandi.homepage.domain.model.HomepageCartDto
 import com.srikandi.homepage.domain.model.HomepageFilterDto
 import com.srikandi.homepage.domain.model.HomepageProductDto
 import com.srikandi.homepage.domain.model.HomepageProductListDto
@@ -39,7 +40,12 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
 
     fun addCartItem(product: HomepageProductDto) = setState {
         val newList = cartContainer.toMutableList().apply {
-            add(product)
+            val productInCart = find { it.product === product }
+            if (productInCart == null) {
+                add(HomepageCartDto(product, 1))
+            } else {
+                productInCart.quantity++
+            }
         }
         copy(cartContainer = newList)
     }

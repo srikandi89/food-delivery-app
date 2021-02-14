@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.srikandi.common.adapters.GeneralRecyclerviewAdapter
 import com.srikandi.common.mvrx.MvRxDialogFragment
 import com.srikandi.homepage.R
-import com.srikandi.homepage.domain.model.HomepageProductDto
+import com.srikandi.homepage.domain.model.HomepageCartDto
 import com.srikandi.homepage.screen.showcase.HomepageShowcaseState
 import com.srikandi.homepage.screen.showcase.HomepageShowcaseViewModel
 import kotlinx.android.synthetic.main.homepage_fragment_cartlist.*
@@ -46,6 +46,8 @@ class HomepageCartlistFragment : MvRxDialogFragment(R.layout.homepage_fragment_c
 
     private fun subscribeCartContainer() {
         viewModel.selectSubscribe(HomepageShowcaseState::cartContainer) { cartList ->
+            calculateTotal(cartList)
+
             if (cartList.isNotEmpty()) {
                 cartListAdapter.setData(cartList)
             } else {
@@ -54,15 +56,39 @@ class HomepageCartlistFragment : MvRxDialogFragment(R.layout.homepage_fragment_c
         }
     }
 
+    private fun calculateTotal(cartList: List<HomepageCartDto>) {
+        var total = 0.0
+        var currency = ""
+        for (cart in cartList) {
+            total += (cart.product.price * cart.quantity)
+            currency = cart.product.currency
+        }
 
+        homepage_textview_cartlist_value.text =
+            getString(R.string.homepage_text_showcase_productprice, total.toString(), currency)
+    }
 
-    private fun bindCartListView(item: HomepageProductDto, position: Int, view: View) {
+    private fun bindCartListView(item: HomepageCartDto, position: Int, view: View) {
+        val product = item.product
+
+        val priceInfo = getString(
+            R.string.homepage_text_showcase_productprice,
+            product.price.toString(),
+            product.currency
+        )
+
+        val productAndQty = getString(
+            R.string.homepage_text_cartlist_productandqty,
+            priceInfo,
+            item.quantity.toString()
+        )
+
         with(view) {
             Glide.with(this@HomepageCartlistFragment)
-                .load(item.imageUrl).centerCrop()
+                .load(product.imageUrl).centerCrop()
                 .into(homepage_imageview_cartlist_imageitem)
-            homepage_textview_cartlist_title.text = item.title
-            homepage_textview_cartlist_priceinfo.text = item.price.toString()
+            homepage_textview_cartlist_title.text = product.title
+            homepage_textview_cartlist_priceinfo.text = productAndQty
             homepage_imageview_cartlist_removeicon.setOnClickListener {
 
             }
