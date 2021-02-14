@@ -14,5 +14,6 @@ fun Button.setActive(selected: Boolean) {
     else {
         setBackgroundResource(R.drawable.homepage_bg_general_greyroundedborder)
         setTextColor(ContextCompat.getColor(context, R.color.grey_500))
+        setTypeface(null, Typeface.NORMAL)
     }
 }
