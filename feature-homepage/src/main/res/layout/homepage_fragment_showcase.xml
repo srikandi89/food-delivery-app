@@ -70,12 +70,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:tabTextColor="@color/grey_500"
-            app:tabTextAppearance="@style/HomepageStyleTabText"
-            app:tabSelectedTextColor="@color/black"
             app:tabGravity="fill"
             app:tabIndicatorHeight="0dp"
-            app:tabMode="fixed" />
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextAppearance="@style/HomepageStyleTabText"
+            app:tabTextColor="@color/grey_500" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/homepage_viewpager_showcase"
