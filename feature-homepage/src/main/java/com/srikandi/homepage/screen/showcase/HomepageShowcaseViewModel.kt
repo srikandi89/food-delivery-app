@@ -36,7 +36,7 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
                 HomepageProductDto(2, "Product 2", "Product Description 2", "https://image.freepik.com/free-photo/frozen-homemade-round-cutlets_114579-35131.jpg", 60.0),
                 HomepageProductDto(3, "Product 3", "Product Description 3", "https://image.freepik.com/free-photo/chicken-steak-with-lemon-tomato-chili-carrot-white-plate_1150-25887.jpg", 60.0),
                 HomepageProductDto(4, "Product 4", "Product Description 4", "https://image.freepik.com/free-photo/frozen-homemade-round-cutlets_114579-35131.jpg", 60.0),
-                HomepageProductDto(5, "Product 5", "Product Description 5", "https://https://image.freepik.com/free-photo/chicken-steak-with-lemon-tomato-chili-carrot-white-plate_1150-25887.jpg", 60.0)
+                HomepageProductDto(5, "Product 5", "Product Description 5", "https://image.freepik.com/free-photo/chicken-steak-with-lemon-tomato-chili-carrot-white-plate_1150-25887.jpg", 60.0)
             )
         )
         Observable.just(data).execute {

@@ -1,21 +1,20 @@
 package com.srikandi.homepage.screen.showcase
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.airbnb.mvrx.*
 import com.bumptech.glide.Glide
 import com.srikandi.common.adapters.GeneralRecyclerviewAdapter
-import com.srikandi.common.mvrx.MvRxFragment
 import com.srikandi.homepage.R
 import com.srikandi.homepage.domain.model.HomepageProductDto
 import com.srikandi.homepage.domain.model.HomepageProductListDto
+import com.srikandi.homepage.screen.HomepageFragment
 import com.srikandi.uikit.imageslider.ImageSliderDto
 import kotlinx.android.synthetic.main.homepage_fragment_showcase.*
 import kotlinx.android.synthetic.main.homepage_item_showcase_product.view.*
 import javax.inject.Inject
 
-class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcase) {
+class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_showcase) {
     @Inject
     lateinit var viewModelFactory: HomepageShowcaseViewModel.Factory
 
@@ -58,7 +57,7 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
 
     private fun setupNavigation() {
         homepage_counterfab_showcase.setOnClickListener {
-            // todo : go to cart screen
+            navigator?.navigateToCartFragment()
         }
     }
 
@@ -92,7 +91,7 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
             manageProductListState(it)
         }
     }
-    
+
     private fun subscribeCartContainer() {
         viewModel.selectSubscribe(HomepageShowcaseState::cartContainer, uniqueOnly()) {
             homepage_counterfab_showcase.count = it.size
@@ -100,7 +99,7 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
     }
 
     private fun manageImageSliderState(dataAsync: Async<List<ImageSliderDto>>) {
-        when(dataAsync) {
+        when (dataAsync) {
             is Uninitialized -> viewModel.loadImageSlider()
             is Loading -> {
                 // todo: create loading state screen
@@ -121,7 +120,7 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
     }
 
     private fun manageProductListState(dataAsync: Async<HomepageProductListDto>) {
-        when(dataAsync) {
+        when (dataAsync) {
             is Uninitialized -> viewModel.loadProductList()
             is Loading -> {
                 // todo: create loading state screen
@@ -142,5 +141,5 @@ class HomepageShowcaseFragment : MvRxFragment(R.layout.homepage_fragment_showcas
         }
     }
 
-    override fun invalidate() { }
+    override fun invalidate() {}
 }
