@@ -65,6 +65,45 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/homepage_item_showcase_product">
 
+        <LinearLayout
+            android:id="@+id/homepage_layout_showcase_filterarea"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FILTERS"
+                android:layout_marginStart="16dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                app:backgroundTint="@null"
+                android:minWidth="80dp"
+                android:fontFamily="sans-serif-thin"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:background="@drawable/homepage_bg_general_greyroundedborder"
+                android:text="Spicy" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                app:backgroundTint="@null"
+                android:minWidth="80dp"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="@color/black"
+                android:background="@drawable/homepage_bg_general_greyroundedborder"
+                android:text="Vegan" />
+        </LinearLayout>
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/homepage_tablayout_showcase"
             android:layout_width="match_parent"
