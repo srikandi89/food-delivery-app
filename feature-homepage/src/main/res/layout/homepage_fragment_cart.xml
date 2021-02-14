@@ -12,11 +12,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingVertical="8dp">
+        android:paddingVertical="16dp">
 
         <ImageView
             android:id="@+id/homepage_imageview_cart_backicon"
-            android:layout_width="wrap_content"
+            android:layout_width="32dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
             android:src="@drawable/baseline_arrow_back_ios_24"
@@ -28,8 +28,8 @@
             android:id="@+id/homepage_textview_cart_backtitle"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="Back"
             android:gravity="center_vertical"
+            android:text="Back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/homepage_imageview_cart_backicon"

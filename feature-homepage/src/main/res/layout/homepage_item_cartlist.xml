@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/homepage_imageview_cartlist_imageitem"
@@ -16,6 +17,8 @@
         android:id="@+id/homepage_textview_cartlist_title"
         android:layout_width="200dp"
         android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_vertical"
         app:layout_constraintStart_toEndOf="@+id/homepage_imageview_cartlist_imageitem"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +26,8 @@
         android:id="@+id/homepage_textview_cartlist_priceinfo"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_vertical"
         app:layout_constraintEnd_toStartOf="@+id/homepage_imageview_cartlist_removeicon"
         app:layout_constraintStart_toEndOf="@+id/homepage_textview_cartlist_title"
         app:layout_constraintTop_toTopOf="parent"

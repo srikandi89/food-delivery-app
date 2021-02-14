@@ -18,6 +18,7 @@ class HomepageCartFragment : MvRxDialogFragment(R.layout.homepage_fragment_cart)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupNavigation()
         setupTabLayout()
     }
 
@@ -34,6 +35,12 @@ class HomepageCartFragment : MvRxDialogFragment(R.layout.homepage_fragment_cart)
                     currentItem = state.tabPosition
                 }
             }
+        }
+    }
+
+    private fun setupNavigation() {
+        homepage_imageview_cart_backicon.setOnClickListener {
+            dismiss()
         }
     }
 
