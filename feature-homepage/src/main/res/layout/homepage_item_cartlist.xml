@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/homepage_imageview_cartlist_imageitem"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homepage_textview_cartlist_title"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        app:layout_constraintStart_toEndOf="@+id/homepage_imageview_cartlist_imageitem"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homepage_textview_cartlist_priceinfo"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/homepage_imageview_cartlist_removeicon"
+        app:layout_constraintStart_toEndOf="@+id/homepage_textview_cartlist_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="46 USD" />
+
+    <ImageView
+        android:id="@+id/homepage_imageview_cartlist_removeicon"
+        android:layout_width="32dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_clear_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>

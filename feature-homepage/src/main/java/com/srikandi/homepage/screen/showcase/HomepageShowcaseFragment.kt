@@ -6,6 +6,7 @@ import com.airbnb.mvrx.*
 import com.srikandi.common.adapters.ScreenPagerAdapter
 import com.srikandi.homepage.R
 import com.srikandi.homepage.screen.HomepageFragment
+import com.srikandi.homepage.screen.cartlist.HomepageCartlistFragment
 import com.srikandi.homepage.screen.productlist.HomepageProductlistFragment
 import com.srikandi.uikit.imageslider.ImageSliderDto
 import kotlinx.android.synthetic.main.homepage_fragment_showcase.*
@@ -38,7 +39,9 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
 
     private fun setupNavigation() {
         homepage_counterfab_showcase.setOnClickListener {
-            navigator?.navigateToCartFragment()
+            HomepageCartlistFragment.newInstance().also {
+                it.show(childFragmentManager, it.tag.orEmpty())
+            }
         }
     }
 
