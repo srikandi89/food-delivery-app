@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.homepage_item_showcase_product.view.*
 
 class HomepageProductlistFragment : HomepageFragment(R.layout.homepage_fragment_productlist) {
 
-    private val viewModel: HomepageShowcaseViewModel by parentFragmentViewModel ()
+    private val viewModel: HomepageShowcaseViewModel by parentFragmentViewModel()
 
     private val productListAdapter = GeneralRecyclerviewAdapter(
         R.layout.homepage_item_showcase_product,
@@ -46,13 +46,20 @@ class HomepageProductlistFragment : HomepageFragment(R.layout.homepage_fragment_
     }
 
     private fun bindProductListView(item: HomepageProductDto, position: Int, view: View) {
-        // todo : change homepage_textview_showcase_productdetail with real value
         with(view) {
             homepage_textview_showcase_producttitle.text = item.title
             homepage_textview_showcase_productsubtitle.text = item.subtitle
-            homepage_textview_showcase_productdetail.text = item.subtitle
+            homepage_textview_showcase_productdetail.text = getString(
+                R.string.homepage_text_showcase_productdetail,
+                item.weight.toString(),
+                item.length.toString()
+            )
             with(homepage_button_showcase_addproduct) {
-                text = getString(R.string.homepage_text_showcase_productprice, item.price.toString(), item.currency)
+                text = getString(
+                    R.string.homepage_text_showcase_productprice,
+                    item.price.toString(),
+                    item.currency
+                )
                 setOnClickListener {
                     viewModel.addCartItem(item)
                 }
@@ -92,7 +99,7 @@ class HomepageProductlistFragment : HomepageFragment(R.layout.homepage_fragment_
         }
     }
 
-    override fun invalidate() { }
+    override fun invalidate() {}
 
     companion object {
         @JvmStatic

@@ -26,7 +26,9 @@ class HomepageShowcaseDataMapper {
                 subtitle = it.title.orEmpty(),
                 imageUrl = it.imageUrl.orEmpty(),
                 price = it.price.orZero(),
-                currency = it.currency.orEmpty()
+                currency = it.currency.orEmpty(),
+                weight = it.weight.orZero(),
+                length = it.length.orZero()
             )
         }.orEmpty()
 

@@ -6,5 +6,7 @@ data class HomepageProductDto(
     val subtitle: String = "",
     val imageUrl: String = "",
     val price: Double = 0.0,
-    val currency: String = ""
+    val currency: String = "",
+    val weight: Double = 0.0,
+    val length: Double = 0.0
 )

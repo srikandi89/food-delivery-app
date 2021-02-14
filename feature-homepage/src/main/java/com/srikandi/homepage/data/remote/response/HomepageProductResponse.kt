@@ -14,5 +14,9 @@ data class HomepageProductResponse(
     @SerializedName("price")
     val price: Double? = null,
     @SerializedName("currency")
-    val currency: String? = null
+    val currency: String? = null,
+    @SerializedName("weight")
+    val weight: Double = 0.0,
+    @SerializedName("length")
+    val length: Double = 0.0
 )

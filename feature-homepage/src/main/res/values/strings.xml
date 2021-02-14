@@ -1,3 +1,4 @@
 <resources>
     <string name="homepage_text_showcase_productprice">%s %s</string>
+    <string name="homepage_text_showcase_productdetail">%s grams, %s cm</string>
 </resources>

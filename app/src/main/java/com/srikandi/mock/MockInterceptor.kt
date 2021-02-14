@@ -66,7 +66,9 @@ class MockInterceptor : Interceptor {
                 subtitle = "Grilled Papperoni Pizza",
                 imageUrl = "https://image.freepik.com/free-photo/chicken-steak-with-lemon-tomato-chili-carrot-white-plate_1150-25887.jpg",
                 price = 60.0,
-                currency = "USD"
+                currency = "USD",
+                weight = 3.5,
+                length = 12.0
             ),
             HomepageProductResponse(
                 productId = 1,
@@ -74,7 +76,9 @@ class MockInterceptor : Interceptor {
                 subtitle = "Hot Cheezy Baked Chicken",
                 imageUrl = "https://image.freepik.com/free-photo/frozen-homemade-round-cutlets_114579-35131.jpg",
                 price = 45.0,
-                currency = "USD"
+                currency = "USD",
+                weight = 2.3,
+                length = 8.4
             ),
             HomepageProductResponse(
                 productId = 1,
@@ -82,7 +86,9 @@ class MockInterceptor : Interceptor {
                 subtitle = "Hot Spicy Fried Chicken",
                 imageUrl = "https://image.freepik.com/free-photo/frozen-homemade-round-cutlets_114579-35131.jpg",
                 price = 33.0,
-                currency = "USD"
+                currency = "USD",
+                weight = 2.7,
+                length = 9.1
             )
         )
 
