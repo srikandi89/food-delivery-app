@@ -10,12 +10,12 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/homepage_appbar_showcase"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <!-- TODO : handle scroll back to unroll the screen -->
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -50,6 +50,11 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/common_header_textsize_subtitle" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/homepage_bg_showcase_productlistheader" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
