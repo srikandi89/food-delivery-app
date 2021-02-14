@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- TODO : handle scroll back to unroll the screen -->
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="500dp"
@@ -71,7 +70,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            app:tabTextColor="@color/grey_500"
+            app:tabTextAppearance="@style/HomepageStyleTabText"
+            app:tabSelectedTextColor="@color/black"
             app:tabGravity="fill"
+            app:tabIndicatorHeight="0dp"
             app:tabMode="fixed" />
 
         <androidx.viewpager.widget.ViewPager
@@ -86,9 +89,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
         app:badgeBackgroundColor="@color/green"
         app:layout_anchor="@id/homepage_recyclerview_showcase"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/baseline_add_shopping_cart_24"
-        android:backgroundTint="@color/white" />
+        app:srcCompat="@drawable/baseline_add_shopping_cart_24" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
