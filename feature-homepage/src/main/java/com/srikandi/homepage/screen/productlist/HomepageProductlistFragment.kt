@@ -22,7 +22,7 @@ class HomepageProductlistFragment : HomepageFragment(R.layout.homepage_fragment_
         R.layout.homepage_item_showcase_product,
         onBind = ::bindProductListView,
         itemListener = { item, _, _ ->
-            viewModel.addCartItem(item)
+            // todo : open product detail here
         }
     )
 
