@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.airbnb.mvrx.*
+import com.srikandi.common.adapters.GeneralRecyclerviewAdapter
 import com.srikandi.common.adapters.ScreenPagerAdapter
 import com.srikandi.homepage.R
 import com.srikandi.homepage.domain.model.HomepageFilterDto
@@ -13,6 +14,7 @@ import com.srikandi.homepage.screen.cartlist.HomepageCartlistFragment
 import com.srikandi.homepage.screen.productlist.HomepageProductlistFragment
 import com.srikandi.uikit.imageslider.ImageSliderDto
 import kotlinx.android.synthetic.main.homepage_fragment_showcase.*
+import kotlinx.android.synthetic.main.homepage_item_showcase_filter.view.*
 import javax.inject.Inject
 
 class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_showcase) {
@@ -20,6 +22,14 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
     lateinit var viewModelFactory: HomepageShowcaseViewModel.Factory
 
     private val viewModel: HomepageShowcaseViewModel by fragmentViewModel()
+
+    private val filterListAdapter = GeneralRecyclerviewAdapter(
+        layoutResId = R.layout.homepage_item_showcase_filter,
+        onBind = ::bindFilterListView,
+        itemListener = { item, _, _ ->
+
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +44,7 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
 
         setupNavigation()
         setupTabLayout()
+        setupRecyclerView()
     }
 
     override fun onDestroyView() {
@@ -62,6 +73,19 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
                     currentItem = state.tabPosition
                 }
             }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        with(homepage_recyclerview_showcase_filter) {
+            itemAnimator = null
+            adapter = filterListAdapter
+        }
+    }
+
+    private fun bindFilterListView(item: HomepageFilterDto, position: Int, view: View) {
+        with(view) {
+            homepage_button_showcase_productfilter.text = item.title
         }
     }
 
@@ -117,7 +141,7 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
                 val data = dataAsync.invoke()
 
                 if (data.isNotEmpty()) {
-                    // todo : populate filters button as a horizontal recyclerview item
+                    filterListAdapter.setData(data)
                 } else {
                     // todo : create empty screen
                 }

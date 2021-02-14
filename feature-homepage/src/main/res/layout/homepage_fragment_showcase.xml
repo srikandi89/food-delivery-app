@@ -76,32 +76,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="FILTERS"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginHorizontal="16dp"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                app:backgroundTint="@null"
-                android:minWidth="80dp"
-                android:fontFamily="sans-serif-thin"
-                android:textSize="12sp"
-                android:textColor="@color/black"
-                android:background="@drawable/homepage_bg_general_greyroundedborder"
-                android:text="Spicy" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                app:backgroundTint="@null"
-                android:minWidth="80dp"
-                android:textSize="12sp"
-                android:fontFamily="sans-serif-thin"
-                android:textColor="@color/black"
-                android:background="@drawable/homepage_bg_general_greyroundedborder"
-                android:text="Vegan" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homepage_recyclerview_showcase_filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/homepage_item_showcase_filter" />
         </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout

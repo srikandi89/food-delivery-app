@@ -19,7 +19,7 @@ class HomepageProductlistFragment : HomepageFragment(R.layout.homepage_fragment_
     private val viewModel: HomepageShowcaseViewModel by parentFragmentViewModel()
 
     private val productListAdapter = GeneralRecyclerviewAdapter(
-        R.layout.homepage_item_showcase_product,
+        layoutResId = R.layout.homepage_item_showcase_product,
         onBind = ::bindProductListView,
         itemListener = { item, _, _ ->
             // todo : open product detail here

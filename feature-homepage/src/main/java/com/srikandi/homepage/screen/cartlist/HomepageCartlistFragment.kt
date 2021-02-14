@@ -1,7 +1,6 @@
 package com.srikandi.homepage.screen.cartlist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.airbnb.mvrx.parentFragmentViewModel
 import com.bumptech.glide.Glide
@@ -12,13 +11,13 @@ import com.srikandi.homepage.domain.model.HomepageProductDto
 import com.srikandi.homepage.screen.showcase.HomepageShowcaseState
 import com.srikandi.homepage.screen.showcase.HomepageShowcaseViewModel
 import kotlinx.android.synthetic.main.homepage_fragment_cartlist.*
-import kotlinx.android.synthetic.main.homepage_item_cartlist.view.*
+import kotlinx.android.synthetic.main.homepage_item_cartlist_cartitem.view.*
 
 class HomepageCartlistFragment : MvRxDialogFragment(R.layout.homepage_fragment_cartlist) {
     private val viewModel: HomepageShowcaseViewModel by parentFragmentViewModel()
 
     private val cartListAdapter = GeneralRecyclerviewAdapter(
-        R.layout.homepage_item_cartlist,
+        R.layout.homepage_item_cartlist_cartitem,
         onBind = ::bindCartListView,
         itemListener = { _, _, _ ->
 
