@@ -5,6 +5,6 @@ import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersRespons
 import retrofit2.http.GET
 
 interface HomepageWebService {
-    @GET("/homepage/imagesliders")
+    @GET("/homepage/imageliders")
     fun getSliderImages(): SuccessCall<HomepageGetImageSlidersResponse>
 }

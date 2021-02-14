@@ -1,6 +1,7 @@
 package com.srikandi.homepage.screen.showcase
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.airbnb.mvrx.*
 import com.srikandi.common.adapters.ScreenPagerAdapter

@@ -1,12 +1,12 @@
 package com.srikandi.homepage.data.mapper
 
 import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
-import com.srikandi.homepage.domain.model.HomepageImageSlideDto
+import com.srikandi.uikit.imageslider.ImageSliderDto
 
 class HomepageShowcaseDataMapper {
-    fun generateImageSlideList(response: HomepageGetImageSlidersResponse): List<HomepageImageSlideDto> {
+    fun generateImageSlideList(response: HomepageGetImageSlidersResponse): List<ImageSliderDto> {
         return response.data?.map {
-            HomepageImageSlideDto(
+            ImageSliderDto(
                 title = it.title.orEmpty(),
                 subtitle = it.subtitle.orEmpty(),
                 imageUrl = it.imageUrl.orEmpty()
