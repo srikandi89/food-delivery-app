@@ -26,6 +26,15 @@ class HomepageActivity : AppCompatActivity(), HasAndroidInjector, HomepageNaviga
         }
     }
 
+    override fun onBackPressed() {
+        supportFragmentManager.findFragmentById(R.id.homepage_activity_framelayout)?.let {
+            when (it) {
+                is HomepageShowcaseFragment -> finish()
+                else -> super.onBackPressed()
+            }
+        }
+    }
+
     override fun androidInjector() = supportFragmentInjector
 
     override fun navigateToCartFragment() {
