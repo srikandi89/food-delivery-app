@@ -2,10 +2,7 @@ package com.srikandi.mock
 
 import com.google.gson.Gson
 import com.srikandi.BuildConfig
-import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
-import com.srikandi.homepage.data.remote.response.HomepageImageSliderResponse
-import com.srikandi.homepage.data.remote.response.HomepageProductResponse
+import com.srikandi.homepage.data.remote.response.*
 import okhttp3.*
 
 class MockInterceptor : Interceptor {
@@ -20,6 +17,9 @@ class MockInterceptor : Interceptor {
                 }
                 uri.endsWith("productlist") -> {
                     gson.toJson(getMockProductList())
+                }
+                uri.endsWith("filters") -> {
+                    gson.toJson(getMockFilterList())
                 }
                 else -> ""
             }
@@ -93,5 +93,14 @@ class MockInterceptor : Interceptor {
         )
 
         return HomepageGetProductListResponse(slides)
+    }
+
+    private fun getMockFilterList(): HomepageGetFilterListResponse {
+        val filters = listOf(
+            HomepageFilterResponse("Vegan"),
+            HomepageFilterResponse("Spicy")
+        )
+
+        return HomepageGetFilterListResponse(filters)
     }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import com.airbnb.mvrx.*
 import com.srikandi.common.adapters.ScreenPagerAdapter
 import com.srikandi.homepage.R
+import com.srikandi.homepage.domain.model.HomepageFilterDto
 import com.srikandi.homepage.screen.HomepageFragment
 import com.srikandi.homepage.screen.cart.HomepageCartFragment
 import com.srikandi.homepage.screen.cartlist.HomepageCartlistFragment
@@ -25,6 +26,7 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
 
         subscribeImageSlider()
         subscribeCartContainer()
+        subscribeFilters()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,6 +77,12 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
         }
     }
 
+    private fun subscribeFilters() {
+        viewModel.selectSubscribe(HomepageShowcaseState::filtersAsync, uniqueOnly()) {
+            manageFilterState(it)
+        }
+    }
+
     private fun manageImageSliderState(dataAsync: Async<List<ImageSliderDto>>) {
         when (dataAsync) {
             is Uninitialized -> viewModel.loadImageSlider()
@@ -91,6 +99,27 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
                     homepage_imageslider_showcase.create(data, childFragmentManager)
                 } else {
                     // todo: create empty screen
+                }
+            }
+        }
+    }
+
+    private fun manageFilterState(dataAsync: Async<List<HomepageFilterDto>>) {
+        when(dataAsync) {
+            is Uninitialized -> viewModel.loadFiltersList()
+            is Loading -> {
+                // todo : add loading indicator
+            }
+            is Fail -> {
+                // todo : create fail state screen
+            }
+            is Success -> {
+                val data = dataAsync.invoke()
+
+                if (data.isNotEmpty()) {
+                    // todo : populate filters button as a horizontal recyclerview item
+                } else {
+                    // todo : create empty screen
                 }
             }
         }
