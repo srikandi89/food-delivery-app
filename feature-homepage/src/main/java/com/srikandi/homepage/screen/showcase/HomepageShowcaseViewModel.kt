@@ -2,11 +2,13 @@ package com.srikandi.homepage.screen.showcase
 
 import com.airbnb.mvrx.FragmentViewModelContext
 import com.airbnb.mvrx.MvRxViewModelFactory
+import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.ViewModelContext
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import com.srikandi.common.mvrx.MvRxViewModel
 import com.srikandi.homepage.domain.HomepageUseCaseImpl
+import com.srikandi.homepage.domain.model.HomepageFilterDto
 import com.srikandi.homepage.domain.model.HomepageProductDto
 import com.srikandi.homepage.domain.model.HomepageProductListDto
 import com.srikandi.uikit.imageslider.ImageSliderDto
@@ -40,6 +42,18 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
             add(product)
         }
         copy(cartContainer = newList)
+    }
+
+    fun updateSelectedFilters(position: Int) = setState {
+        val filters = filtersAsync.invoke().orEmpty().mapIndexed { index, homepageFilterDto ->
+            if (index == position) {
+                homepageFilterDto.copy(selected = homepageFilterDto.selected.not())
+            } else {
+                homepageFilterDto.copy()
+            }
+        }
+
+        copy(filtersAsync = Success(filters))
     }
 
     fun setTabPosition(position: Int) = setState {

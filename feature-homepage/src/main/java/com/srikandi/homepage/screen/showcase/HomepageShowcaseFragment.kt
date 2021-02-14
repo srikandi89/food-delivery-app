@@ -8,6 +8,7 @@ import com.srikandi.common.adapters.GeneralRecyclerviewAdapter
 import com.srikandi.common.adapters.ScreenPagerAdapter
 import com.srikandi.homepage.R
 import com.srikandi.homepage.domain.model.HomepageFilterDto
+import com.srikandi.homepage.extensions.setActive
 import com.srikandi.homepage.screen.HomepageFragment
 import com.srikandi.homepage.screen.cart.HomepageCartFragment
 import com.srikandi.homepage.screen.cartlist.HomepageCartlistFragment
@@ -26,8 +27,8 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
     private val filterListAdapter = GeneralRecyclerviewAdapter(
         layoutResId = R.layout.homepage_item_showcase_filter,
         onBind = ::bindFilterListView,
-        itemListener = { item, _, _ ->
-
+        itemListener = { _, position, _ ->
+            viewModel.updateSelectedFilters(position)
         }
     )
 
@@ -85,7 +86,13 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
 
     private fun bindFilterListView(item: HomepageFilterDto, position: Int, view: View) {
         with(view) {
-            homepage_button_showcase_productfilter.text = item.title
+            with(homepage_button_showcase_productfilter) {
+                text = item.title
+                setActive(item.selected)
+                setOnClickListener {
+                    viewModel.updateSelectedFilters(position)
+                }
+            }
         }
     }
 
@@ -102,7 +109,7 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
     }
 
     private fun subscribeFilters() {
-        viewModel.selectSubscribe(HomepageShowcaseState::filtersAsync, uniqueOnly()) {
+        viewModel.selectSubscribe(HomepageShowcaseState::filtersAsync) {
             manageFilterState(it)
         }
     }
