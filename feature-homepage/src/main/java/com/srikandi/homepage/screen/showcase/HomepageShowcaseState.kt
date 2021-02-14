@@ -10,5 +10,6 @@ import com.srikandi.uikit.imageslider.ImageSliderDto
 data class HomepageShowcaseState(
     val imageSlidesAsync: Async<List<ImageSliderDto>> = Uninitialized,
     val productsAsync: Async<HomepageProductListDto> = Uninitialized,
-    val cartContainer: List<HomepageProductDto> = listOf()
+    val cartContainer: List<HomepageProductDto> = listOf(),
+    val tabPosition: Int = 0
 ): MvRxState

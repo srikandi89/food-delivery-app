@@ -34,8 +34,6 @@ class HomepageCartFragment : HomepageFragment(R.layout.homepage_fragment_cart) {
                     adapter = it
                     homepage_tablayout_cart.setupWithViewPager(this)
                     currentItem = state.tabPosition
-
-                    viewModel.setTabPosition(state.tabPosition)
                 }
             }
         }
