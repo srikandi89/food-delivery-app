@@ -2,4 +2,6 @@
     <string name="homepage_text_showcase_productprice">%s %s</string>
     <string name="homepage_text_showcase_productdetail">%s grams, %s cm</string>
     <string name="homepage_text_cartlist_productandqty">%s x %s</string>
+    <string name="homepage_text_cartlist_deliveryfee">Delivery fee is %s %s</string>
+    <string name="homepage_text_cartlist_freedeliveryfee">Delivery fee is free</string>
 </resources>

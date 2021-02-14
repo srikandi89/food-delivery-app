@@ -2,10 +2,7 @@ package com.srikandi.homepage.data
 
 import com.srikandi.common.module.BaseRepository
 import com.srikandi.homepage.data.remote.HomepageRemoteRepository
-import com.srikandi.homepage.data.remote.response.HomepageGetCategoryListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetFilterListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
+import com.srikandi.homepage.data.remote.response.*
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -26,5 +23,9 @@ class HomepageRepository @Inject constructor (
 
     fun getCategoryList(): Observable<HomepageGetCategoryListResponse> {
         return generateResponse(remoteRepository.getCategoryList())
+    }
+
+    fun getDeliveryFee(): Observable<HomepageGetDeliveryFeeResponse> {
+        return generateResponse(remoteRepository.getDeliveryFee())
     }
 }

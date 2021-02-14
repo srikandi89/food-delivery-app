@@ -1,10 +1,7 @@
 package com.srikandi.homepage.data.remote
 
 import com.srikandi.common.networks.SuccessCall
-import com.srikandi.homepage.data.remote.response.HomepageGetCategoryListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetFilterListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
+import com.srikandi.homepage.data.remote.response.*
 import javax.inject.Inject
 
 class HomepageRemoteRepository @Inject constructor(
@@ -21,4 +18,7 @@ class HomepageRemoteRepository @Inject constructor(
 
     fun getCategoryList(): SuccessCall<HomepageGetCategoryListResponse> =
         homepageWebService.getCategoryList()
+
+    fun getDeliveryFee(): SuccessCall<HomepageGetDeliveryFeeResponse> =
+        homepageWebService.getDeliveryFee()
 }

@@ -11,6 +11,7 @@ data class HomepageShowcaseState(
     val productsAsync: Async<HomepageProductListDto> = Uninitialized,
     val filtersAsync: Async<List<HomepageFilterDto>> = Uninitialized,
     val categoriesAsync: Async<List<HomepageCategoryDto>> = Uninitialized,
+    val deliveryFeeAsync: Async<HomepageDeliveryFeeDto> = Uninitialized,
     val cartContainer: List<HomepageCartDto> = listOf(),
     val tabPosition: Int = 0
 ): MvRxState

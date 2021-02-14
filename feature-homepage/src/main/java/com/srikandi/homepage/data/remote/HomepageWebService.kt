@@ -1,10 +1,7 @@
 package com.srikandi.homepage.data.remote
 
 import com.srikandi.common.networks.SuccessCall
-import com.srikandi.homepage.data.remote.response.HomepageGetCategoryListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetFilterListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
+import com.srikandi.homepage.data.remote.response.*
 import retrofit2.http.GET
 
 interface HomepageWebService {
@@ -19,4 +16,7 @@ interface HomepageWebService {
 
     @GET("/homepage/categories")
     fun getCategoryList(): SuccessCall<HomepageGetCategoryListResponse>
+
+    @GET("/homepage/deliveryfee")
+    fun getDeliveryFee(): SuccessCall<HomepageGetDeliveryFeeResponse>
 }

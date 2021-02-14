@@ -44,6 +44,12 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
         }
     }
 
+    fun loadDeliveryFee() {
+        homepageUseCase.getDeliveryFee().subscribeOn(Schedulers.io()).execute {
+            copy(deliveryFeeAsync = it)
+        }
+    }
+
     fun addCartItem(product: HomepageProductDto) = setState {
         val newList = cartContainer.toMutableList().apply {
             val productInCart = find { it.product === product }

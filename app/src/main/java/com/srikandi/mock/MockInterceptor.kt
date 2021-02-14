@@ -24,6 +24,9 @@ class MockInterceptor : Interceptor {
                 uri.endsWith("categories") -> {
                     gson.toJson(getMockCategoryList())
                 }
+                uri.endsWith("deliveryfee") -> {
+                    gson.toJson(getMockDeliveryFee())
+                }
                 else -> ""
             }
 
@@ -115,5 +118,9 @@ class MockInterceptor : Interceptor {
         )
 
         return HomepageGetCategoryListResponse(categories)
+    }
+
+    private fun getMockDeliveryFee(): HomepageGetDeliveryFeeResponse {
+        return HomepageGetDeliveryFeeResponse(HomepageDeliveryFeeResponse(12.0, "USD"))
     }
 }

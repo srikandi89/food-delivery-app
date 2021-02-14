@@ -1,14 +1,8 @@
 package com.srikandi.homepage.data.mapper
 
 import com.srikandi.common.extensions.orZero
-import com.srikandi.homepage.data.remote.response.HomepageGetCategoryListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetFilterListResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
-import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
-import com.srikandi.homepage.domain.model.HomepageCategoryDto
-import com.srikandi.homepage.domain.model.HomepageFilterDto
-import com.srikandi.homepage.domain.model.HomepageProductDto
-import com.srikandi.homepage.domain.model.HomepageProductListDto
+import com.srikandi.homepage.data.remote.response.*
+import com.srikandi.homepage.domain.model.*
 import com.srikandi.uikit.imageslider.ImageSliderDto
 
 class HomepageShowcaseDataMapper {
@@ -54,5 +48,12 @@ class HomepageShowcaseDataMapper {
                 title = it.title.orEmpty()
             )
         }.orEmpty()
+    }
+
+    fun generateDeliveryFee(response: HomepageGetDeliveryFeeResponse): HomepageDeliveryFeeDto {
+        return HomepageDeliveryFeeDto(
+            fee = response.data?.fee.orZero(),
+            currency = response.data?.currency.orEmpty()
+        )
     }
 }
