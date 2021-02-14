@@ -52,4 +52,6 @@ class MockInterceptor : Interceptor {
 
         return HomepageGetImageSlidersResponse(slides)
     }
+
+
 }
