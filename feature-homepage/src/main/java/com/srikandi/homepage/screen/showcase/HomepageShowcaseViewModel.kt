@@ -38,6 +38,12 @@ class HomepageShowcaseViewModel @AssistedInject constructor(
         }
     }
 
+    fun loadCategoryList() {
+        homepageUseCase.getCategoryList().subscribeOn(Schedulers.io()).execute {
+            copy(categoriesAsync = it)
+        }
+    }
+
     fun addCartItem(product: HomepageProductDto) = setState {
         val newList = cartContainer.toMutableList().apply {
             val productInCart = find { it.product === product }

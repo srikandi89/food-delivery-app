@@ -2,6 +2,7 @@ package com.srikandi.homepage.domain
 
 import com.srikandi.homepage.data.HomepageRepository
 import com.srikandi.homepage.data.mapper.HomepageDataMapper.getShowcaseMapper
+import com.srikandi.homepage.domain.model.HomepageCategoryDto
 import com.srikandi.homepage.domain.model.HomepageFilterDto
 import com.srikandi.homepage.domain.model.HomepageImageSlideDto
 import com.srikandi.homepage.domain.model.HomepageProductListDto
@@ -26,6 +27,12 @@ class HomepageUseCaseImpl(
     override fun getFilterList(): Observable<List<HomepageFilterDto>> {
         return repository.getFilterList().map {
             getShowcaseMapper().generateFilterList(it)
+        }
+    }
+
+    override fun getCategoryList(): Observable<List<HomepageCategoryDto>> {
+        return repository.getCategoryList().map {
+            getShowcaseMapper().generateCategoryList(it)
         }
     }
 

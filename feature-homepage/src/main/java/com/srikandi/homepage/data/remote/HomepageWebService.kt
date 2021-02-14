@@ -1,6 +1,7 @@
 package com.srikandi.homepage.data.remote
 
 import com.srikandi.common.networks.SuccessCall
+import com.srikandi.homepage.data.remote.response.HomepageGetCategoryListResponse
 import com.srikandi.homepage.data.remote.response.HomepageGetFilterListResponse
 import com.srikandi.homepage.data.remote.response.HomepageGetImageSlidersResponse
 import com.srikandi.homepage.data.remote.response.HomepageGetProductListResponse
@@ -15,4 +16,7 @@ interface HomepageWebService {
 
     @GET("/homepage/filters")
     fun getFilterList(): SuccessCall<HomepageGetFilterListResponse>
+
+    @GET("/homepage/categories")
+    fun getCategoryList(): SuccessCall<HomepageGetCategoryListResponse>
 }

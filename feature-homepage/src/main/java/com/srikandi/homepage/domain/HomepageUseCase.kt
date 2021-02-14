@@ -1,5 +1,6 @@
 package com.srikandi.homepage.domain
 
+import com.srikandi.homepage.domain.model.HomepageCategoryDto
 import com.srikandi.homepage.domain.model.HomepageFilterDto
 import com.srikandi.homepage.domain.model.HomepageProductListDto
 import com.srikandi.uikit.imageslider.ImageSliderDto
@@ -12,4 +13,6 @@ interface HomepageUseCase {
     fun getProductList(): Observable<HomepageProductListDto>
 
     fun getFilterList(): Observable<List<HomepageFilterDto>>
+
+    fun getCategoryList(): Observable<List<HomepageCategoryDto>>
 }

@@ -7,6 +7,7 @@ import com.airbnb.mvrx.*
 import com.srikandi.common.adapters.GeneralRecyclerviewAdapter
 import com.srikandi.common.adapters.ScreenPagerAdapter
 import com.srikandi.homepage.R
+import com.srikandi.homepage.domain.model.HomepageCategoryDto
 import com.srikandi.homepage.domain.model.HomepageFilterDto
 import com.srikandi.homepage.extensions.setActive
 import com.srikandi.homepage.screen.HomepageFragment
@@ -38,13 +39,13 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
         subscribeImageSlider()
         subscribeCartContainer()
         subscribeFilters()
+        subscribeCategories()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupNavigation()
-        setupTabLayout()
         setupRecyclerView()
     }
 
@@ -61,12 +62,12 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
         }
     }
 
-    private fun setupTabLayout() {
+    private fun setupTabLayout(categories: List<HomepageCategoryDto>) {
         withState(viewModel) { state ->
             ScreenPagerAdapter(childFragmentManager).apply {
-                addFragment(HomepageProductlistFragment.newInstance(), "Pizza")
-                addFragment(HomepageProductlistFragment.newInstance(), "Sushi")
-                addFragment(HomepageProductlistFragment.newInstance(), "Drinks")
+                for (category in categories) {
+                    addFragment(HomepageProductlistFragment.newInstance(), category.title)
+                }
             }.also {
                 with(homepage_viewpager_showcase) {
                     adapter = it
@@ -114,6 +115,12 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
         }
     }
 
+    private fun subscribeCategories() {
+        viewModel.selectSubscribe(HomepageShowcaseState::categoriesAsync) {
+            manageCategoryState(it)
+        }
+    }
+
     private fun manageImageSliderState(dataAsync: Async<List<ImageSliderDto>>) {
         when (dataAsync) {
             is Uninitialized -> viewModel.loadImageSlider()
@@ -151,6 +158,27 @@ class HomepageShowcaseFragment : HomepageFragment(R.layout.homepage_fragment_sho
                     filterListAdapter.setData(data)
                 } else {
                     // todo : create empty screen
+                }
+            }
+        }
+    }
+
+    private fun manageCategoryState(dataAsync: Async<List<HomepageCategoryDto>>) {
+        when(dataAsync) {
+            is Uninitialized -> viewModel.loadCategoryList()
+            is Loading -> {
+                // todo : add loading indicator
+            }
+            is Fail -> {
+                // todo : create fail state screen
+            }
+            is Success -> {
+                val data = dataAsync.invoke()
+
+                if (data.isNotEmpty()) {
+                    setupTabLayout(data)
+                } else {
+                    // todo : create empty state screen
                 }
             }
         }

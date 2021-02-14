@@ -21,6 +21,9 @@ class MockInterceptor : Interceptor {
                 uri.endsWith("filters") -> {
                     gson.toJson(getMockFilterList())
                 }
+                uri.endsWith("categories") -> {
+                    gson.toJson(getMockCategoryList())
+                }
                 else -> ""
             }
 
@@ -102,5 +105,15 @@ class MockInterceptor : Interceptor {
         )
 
         return HomepageGetFilterListResponse(filters)
+    }
+
+    private fun getMockCategoryList(): HomepageGetCategoryListResponse {
+        val categories = listOf(
+            HomepageCategoryResponse(1, "Pizza"),
+            HomepageCategoryResponse(2, "Sushi"),
+            HomepageCategoryResponse(3, "Drinks")
+        )
+
+        return HomepageGetCategoryListResponse(categories)
     }
 }
